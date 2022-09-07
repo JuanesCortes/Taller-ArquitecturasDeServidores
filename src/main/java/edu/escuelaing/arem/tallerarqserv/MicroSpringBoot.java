@@ -32,4 +32,12 @@ public class MicroSpringBoot {
         }
         System.out.println("Numero de servicios: "+ nServicios);
     }
+    
+    public static boolean existPath(String path){
+        return services.containsKey(path);
+    }
+    
+    public static Method getMethod (String path){
+        return services.get(path);
+    }
 }
