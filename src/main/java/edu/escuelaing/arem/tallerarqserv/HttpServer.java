@@ -6,7 +6,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class HttpServer {
-    public static void main(String[] args) throws IOException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    public static void main(String[] args) throws IOException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ClassNotFoundException {
+        MicroSpringBoot.main(args);
         ServerSocket serverSocket = null;
         try {
             serverSocket = new ServerSocket(35000);
