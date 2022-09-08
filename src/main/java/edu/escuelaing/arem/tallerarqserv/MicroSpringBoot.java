@@ -2,6 +2,7 @@
 package edu.escuelaing.arem.tallerarqserv;
 
 import edu.escuelaing.arem.tallerarqserv.mJUnit.Test;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +15,7 @@ public class MicroSpringBoot {
     
     static Map<String,Method> services = new HashMap<>();
     
-    public static void main(String... args) throws ClassNotFoundException{
+    public static void main(String... args) throws ClassNotFoundException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
         String className = args[0];
         Class c = Class.forName(className);
         Method[] declaredMethods = c.getDeclaredMethods();
@@ -23,8 +24,10 @@ public class MicroSpringBoot {
         
         for (Method n : declaredMethods){
             if (n.isAnnotationPresent(RequestMapping.class)){
-                String key = n.getDeclaredAnnotation(RequestMapping.class).value();
+                
                 System.out.println("Invoking: "+ n.getName() + "in class " + c.getName());
+                String key = n.getAnnotation(RequestMapping.class).value();
+                n.invoke(null);
                 services.put(key, n);
                 nServicios = nServicios +1;
                 

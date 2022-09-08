@@ -1,1 +1,1 @@
-web: java -cp "./target/classes:./target/dependency/*" edu.escuelaing.arem.MDV
+web: java -cp "./target/classes:./target/dependency/*" edu.escuelaing.arem.tallerarqserv.HttpServer edu.escuelaing.arem.tallerarqserv.WebServices
